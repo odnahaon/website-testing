@@ -1,0 +1,133 @@
+package io.github.odnahaon
+
+import io.github.odnahaon.BlackBox
+import java.awt.AWTException
+import java.awt.EventQueue
+import java.awt.Robot
+import java.awt.event.InputEvent
+
+/**
+ * The Black Box robot class. It "plays" a game automatically by loading
+ * "generated" atoms and then clicking rays and atoms. It stops when it
+ * completes the play so the user can solve the game.
+ *
+ * @author noah
+ */
+object BlackBoxRobot {
+    private var controller: Controller? = null
+    private var robot: Robot? = null
+    private const val X_OFFSET = 170
+    private const val Y_OFFSET = 220
+
+    /**
+     * The game invocation method.
+     *
+     * @param args not used
+     */
+    fun main(args: Array<String?>?) {
+        EventQueue.invokeLater(object : Runnable() {
+            fun run() {
+                try {
+                    // Activate the ROBOT so it does not generate random atoms.
+                    BlackBox.TEST = false
+                    BlackBox.ROBOT = true
+
+                    // Create the controller.
+                    controller = Controller()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        })
+
+        // Create the robot.
+        try {
+            robot = Robot()
+            robot.setAutoDelay(40)
+            robot.setAutoWaitForIdle(true)
+        } catch (e1: AWTException) {
+            e1.printStackTrace()
+        }
+
+        // Wait until the controller completes initialization.
+        while (controller == null) {
+            try {
+                Thread.sleep(20)
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+        }
+
+        // Set the four "generated" atoms.
+        controller.setAtom(Position(4, 3))
+        controller.setAtom(Position(0, 7))
+        controller.setAtom(Position(3, 7))
+        controller.setAtom(Position(6, 7))
+
+        // Use the robot to play the game.
+        robot.delay(100)
+        leftClickRay(Direction.NORTH, 1)
+        leftClickRay(Direction.WEST, 1)
+        leftClickRay(Direction.WEST, 2)
+        leftClickRay(Direction.WEST, 3)
+        leftClickAtom(4, 3)
+        leftClickRay(Direction.EAST, 3)
+        leftClickRay(Direction.WEST, 4)
+        leftClickRay(Direction.EAST, 4)
+        leftClickRay(Direction.SOUTH, 0)
+        leftClickRay(Direction.SOUTH, 1)
+        leftClickAtom(0, 7)
+        leftClickRay(Direction.SOUTH, 2)
+        leftClickRay(Direction.SOUTH, 3)
+        leftClickAtom(3, 7)
+        leftClickRay(Direction.SOUTH, 4)
+        leftClickRay(Direction.SOUTH, 6)
+        leftClickAtom(6, 6)
+    }
+
+    /**
+     * Do a left click at the specified X and Y absolute screen location.
+     *
+     * @param x screen X location
+     * @param y screen Y location
+     */
+    private fun leftClick(x: Int, y: Int) {
+        robot.mouseMove(x, y)
+        robot.delay(50)
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK)
+        robot.delay(20)
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK)
+        robot.delay(500)
+    }
+
+    /**
+     * Given the atom X and Y grid location click the corresponding atom button.
+     *
+     * @param x button X location
+     * @param y button Y location
+     */
+    private fun leftClickAtom(x: Int, y: Int) {
+        leftClick(
+            X_OFFSET + 50 + (x * 40 + x * 5),
+            Y_OFFSET + 50 + (y * 40 + y * 5)
+        )
+    }
+
+    /**
+     * Given the direction and number click the corresponding ray button.
+     *
+     * @param direction button direction
+     * @param number    button number starting from 0
+     */
+    private fun leftClickRay(direction: Direction, number: Int) {
+        val num = number + 1
+        when (direction) {
+            NORTH -> leftClick(X_OFFSET + num * 40 + num * 5, Y_OFFSET)
+            SOUTH -> leftClick(X_OFFSET + num * 40 + num * 5, Y_OFFSET + 405)
+            EAST -> leftClick(X_OFFSET + 405, Y_OFFSET + num * 40 + number * 5)
+            WEST -> leftClick(X_OFFSET, Y_OFFSET + num * 40 + number * 5)
+            else -> {
+            }
+        }
+    }
+}

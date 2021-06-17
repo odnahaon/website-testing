@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>BlackBox - Noah's Website</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="blackboxstyle.css"/>
+    <script type="text/javascript" src="js/Click.js"></script>
+  </head>
+  <body>
+    <a name="top"></a>
+    <div class="navbar">
+      <div class="homeimage">
+        <a href="index.html" class="homeimagelink">
+          <img src="home.png" alt="Home image"/>
+        </a>
+      </div>
+      <div class="subnav">
+        <a class="subnavbtn">Projects <i class="fa fa-caret-down"></i></a>
+        <div class="subnav-content">
+          <a href="blackbox.html" target="_blank">BlackBox</a>
+        </div>
+      </div>
+      <a href="about.html" target="_blank">About</a>
+      <a href="credits.html" target="_blank">Credits</a>
+    </div>
+    <div class="content">
+      <div class="boxes">
+        <h1>Hi! I'm a work in progress.</h1>
+        <a href="index.html" class="links">Go home</a>
+      </div>
+      <br />
+      <div class="boxes">
+        <noscript>
+          This game requires JavaScript. Please make sure your browser supports JavaScript and it is enabled.
+        </noscript>
+        <p id="score" style="text-align:right;">0</p>
+        <form>
+          <input type="button" onclick="" value=" " class="cornerbutton" disabled/>
+          <input type="button" onclick="rayButton(1)" value="1" class="raybutton" id="r1"/>
+          <input type="button" onclick="rayButton(2)" value="2" class="raybutton" id="r2"/>
+          <input type="button" onclick="rayButton(3)" value="3" class="raybutton" id="r3"/>
+          <input type="button" onclick="rayButton(4)" value="4" class="raybutton" id="r4"/>
+          <input type="button" onclick="rayButton(5)" value="5" class="raybutton" id="r5"/>
+          <input type="button" onclick="rayButton(6)" value="6" class="raybutton" id="r6"/>
+          <input type="button" onclick="rayButton(7)" value="7" class="raybutton" id="r7"/>
+          <input type="button" onclick="rayButton(8)" value="8" class="raybutton" id="r8"/>
+          <input type="button" onclick="" value=" " class="cornerbutton" disabled/>
+          <br />
+          <input type="button" onclick="rayButton(32)" value="32" class="raybutton" id="r32"/>
+          <input type="button" onclick="atomButton(0,0)" value=" " class="atombutton" id="a00"/>
+          <input type="button" onclick="atomButton(1,0)" value=" " class="atombutton" id="a10"/>
+          <input type="button" onclick="atomButton(2,0)" value=" " class="atombutton" id="a20"/>
+          <input type="button" onclick="atomButton(3,0)" value=" " class="atombutton" id="a30"/>
+          <input type="button" onclick="atomButton(4,0)" value=" " class="atombutton" id="a40"/>
+          <input type="button" onclick="atomButton(5,0)" value=" " class="atombutton" id="a50"/>
+          <input type="button" onclick="atomButton(6,0)" value=" " class="atombutton" id="a60"/>
+          <input type="button" onclick="atomButton(7,0)" value=" " class="atombutton" id="a70"/>
+          <input type="button" onclick="rayButton(9)" value="9" class="raybutton" id="r9"/>
+          <br />
+          <input type="button" onclick="rayButton(31)" value="31" class="raybutton" id="r31"/>
+          <input type="button" onclick="atomButton(0,1)" value=" " class="atombutton" id="a01"/>
+          <input type="button" onclick="atomButton(1,1)" value=" " class="atombutton" id="a101"/>
+          <input type="button" onclick="atomButton(2,1)" value=" " class="atombutton" id="a21"/>
+          <input type="button" onclick="atomButton(3,1)" value=" " class="atombutton" id="a31"/>
+          <input type="button" onclick="atomButton(4,1)" value=" " class="atombutton" id="a41"/>
+          <input type="button" onclick="atomButton(5,1)" value=" " class="atombutton" id="a51"/>
+          <input type="button" onclick="atomButton(6,1)" value=" " class="atombutton" id="a61"/>
+          <input type="button" onclick="atomButton(7,1)" value=" " class="atombutton" id="a71"/>
+          <input type="button" onclick="rayButton(10)" value="10" class="raybutton" id="r10"/>
+          <br />
+          <input type="button" onclick="rayButton(30)" value="30" class="raybutton" id="r30"/>
+          <input type="button" onclick="atomButton(0,2)" value=" " class="atombutton" id="a02"/>
+          <input type="button" onclick="atomButton(1,2)" value=" " class="atombutton" id="a02"/>
+          <input type="button" onclick="atomButton(2,2)" value=" " class="atombutton" id="a02"/>
+          <input type="button" onclick="atomButton(3,2)" value=" " class="atombutton" id="a02"/>
+          <input type="button" onclick="atomButton(4,2)" value=" " class="atombutton" id="a02"/>
+          <input type="button" onclick="atomButton(5,2)" value=" " class="atombutton" id="a02"/>
+          <input type="button" onclick="atomButton(6,2)" value=" " class="atombutton" id="a02"/>
+          <input type="button" onclick="atomButton(7,2)" value=" " class="atombutton" id="a02"/>
+          <input type="button" onclick="rayButton(11)" value="11" class="raybutton" id="r11"/>
+          <br />
+          <input type="button" onclick="rayButton(29)" value="29" class="raybutton" id="r29"/>
+          <input type="button" onclick="atomButton(0,3)" value=" " class="atombutton" id="a03"/>
+          <input type="button" onclick="atomButton(1,3)" value=" " class="atombutton" id="a13"/>
+          <input type="button" onclick="atomButton(2,3)" value=" " class="atombutton" id="a23"/>
+          <input type="button" onclick="atomButton(3,3)" value=" " class="atombutton" id="a33"/>
+          <input type="button" onclick="atomButton(4,3)" value=" " class="atombutton" id="a43"/>
+          <input type="button" onclick="atomButton(5,3)" value=" " class="atombutton" id="a53"/>
+          <input type="button" onclick="atomButton(6,3)" value=" " class="atombutton" id="a63"/>
+          <input type="button" onclick="atomButton(7,3)" value=" " class="atombutton" id="a73"/>
+          <input type="button" onclick="rayButton(12)" value="12" class="raybutton" id="r12"/>
+          <br />
+          <input type="button" onclick="rayButton(28)" value="28" class="raybutton" id="r28"/>
+          <input type="button" onclick="atomButton(0,4)" value=" " class="atombutton" id="a04"/>
+          <input type="button" onclick="atomButton(1,4)" value=" " class="atombutton" id="a14"/>
+          <input type="button" onclick="atomButton(2,4)" value=" " class="atombutton" id="a24"/>
+          <input type="button" onclick="atomButton(3,4)" value=" " class="atombutton" id="a34"/>
+          <input type="button" onclick="atomButton(4,4)" value=" " class="atombutton" id="a44"/>
+          <input type="button" onclick="atomButton(5,4)" value=" " class="atombutton" id="a54"/>
+          <input type="button" onclick="atomButton(6,4)" value=" " class="atombutton" id="a64"/>
+          <input type="button" onclick="atomButton(7,4)" value=" " class="atombutton" id="a74"/>
+          <input type="button" onclick="rayButton(13)" value="13" class="raybutton" id="r13"/>
+          <br />
+          <input type="button" onclick="rayButton(27)" value="27" class="raybutton" id="r27"/>
+          <input type="button" onclick="atomButton(0,5)" value=" " class="atombutton" id="a05"/>
+          <input type="button" onclick="atomButton(1,5)" value=" " class="atombutton" id="a15"/>
+          <input type="button" onclick="atomButton(2,5)" value=" " class="atombutton" id="a25"/>
+          <input type="button" onclick="atomButton(3,5)" value=" " class="atombutton" id="a35"/>
+          <input type="button" onclick="atomButton(4,5)" value=" " class="atombutton" id="a45"/>
+          <input type="button" onclick="atomButton(5,5)" value=" " class="atombutton" id="a55"/>
+          <input type="button" onclick="atomButton(6,5)" value=" " class="atombutton" id="a65"/>
+          <input type="button" onclick="atomButton(7,5)" value=" " class="atombutton" id="a75"/>
+          <input type="button" onclick="rayButton(14)" value="14" class="raybutton" id="r14"/>
+          <br />
+          <input type="button" onclick="rayButton(26)" value="26" class="raybutton" id="r26"/>
+          <input type="button" onclick="atomButton(0,6)" value=" " class="atombutton" id="a06"/>
+          <input type="button" onclick="atomButton(1,6)" value=" " class="atombutton" id="a16"/>
+          <input type="button" onclick="atomButton(2,6)" value=" " class="atombutton" id="a26"/>
+          <input type="button" onclick="atomButton(3,6)" value=" " class="atombutton" id="a36"/>
+          <input type="button" onclick="atomButton(4,6)" value=" " class="atombutton" id="a46"/>
+          <input type="button" onclick="atomButton(5,6)" value=" " class="atombutton" id="a56"/>
+          <input type="button" onclick="atomButton(6,6)" value=" " class="atombutton" id="a66"/>
+          <input type="button" onclick="atomButton(7,6)" value=" " class="atombutton" id="a76"/>
+          <input type="button" onclick="rayButton(15)" value="15" class="raybutton" id="r15"/>
+          <br />
+          <input type="button" onclick="rayButton(25)" value="25" class="raybutton" id="r25"/>
+          <input type="button" onclick="atomButton(0,7)" value=" " class="atombutton" id="a07"/>
+          <input type="button" onclick="atomButton(1,7)" value=" " class="atombutton" id="a17"/>
+          <input type="button" onclick="atomButton(2,7)" value=" " class="atombutton" id="a27"/>
+          <input type="button" onclick="atomButton(3,7)" value=" " class="atombutton" id="a37"/>
+          <input type="button" onclick="atomButton(4,7)" value=" " class="atombutton" id="a47"/>
+          <input type="button" onclick="atomButton(5,7)" value=" " class="atombutton" id="a57"/>
+          <input type="button" onclick="atomButton(6,7)" value=" " class="atombutton" id="a67"/>
+          <input type="button" onclick="atomButton(7,7)" value=" " class="atombutton" id="a77"/>
+          <input type="button" onclick="rayButton(16)" value="16" class="raybutton" id="r16"/>
+          <br />
+          <input type="button" onclick="" value=" " class="cornerbutton" disabled/>
+          <input type="button" onclick="rayButton(24)" value="24" class="raybutton" id="r24"/>
+          <input type="button" onclick="rayButton(23)" value="23" class="raybutton" id="r23"/>
+          <input type="button" onclick="rayButton(22)" value="22" class="raybutton" id="r22"/>
+          <input type="button" onclick="rayButton(21)" value="21" class="raybutton" id="r21"/>
+          <input type="button" onclick="rayButton(20)" value="20" class="raybutton" id="r20"/>
+          <input type="button" onclick="rayButton(19)" value="19" class="raybutton" id="r19"/>
+          <input type="button" onclick="rayButton(18)" value="18" class="raybutton" id="r18"/>
+          <input type="button" onclick="rayButton(17)" value="17" class="raybutton" id="r17"/>
+          <input type="button" onclick="" value=" " class="cornerbutton" disabled/>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+.raybutton {
+  height: 50px;
+  width: 50px;
+}
+
+.atombutton {
+  height: 50px;
+  width: 50px;
+}
+
+.cornerbutton {
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  border: none;
+  outline: none;
+}

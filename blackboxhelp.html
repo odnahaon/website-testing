@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BlackBox Help Menu</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/c31a0f4a3b.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  </head>
+  <body>
+    <a name="top"></a>
+    <div class="navbar">
+      <div class="homeimage">
+        <a href="index.html" class="homeimagelink">
+          <img src="home.png" alt="Home image"/>
+        </a>
+      </div>
+      <div class="subnav">
+        <a class="subnavbtn">Projects <i class="fa fa-caret-down"></i></a>
+        <div class="subnav-content">
+          <a href="blackbox.html" target="_blank">BlackBox</a>
+        </div>
+      </div>
+      <a href="about.html" target="_blank">About</a>
+      <a href="credits.html" target="_blank">Credits</a>
+    </div>
+    <div class="content">
+      <div class="boxes">
+      	<h1>Table of Contents</h1>
+      	<ol>
+      		<li><a href="#h_obj" target="_self" class="links">Objective</a></li>
+      		<li><a href="#h_rules" target="_self" class="links">Rules</a></li>
+      		<li><a href="#h_scr" target="_self" class="links">Scoring</a></li>
+      	</ol>
+      </div>
+      <br />
+      <div class="boxes">
+      	<h2><a name="h_obj">Objective</a></h2>
+      	<p>Black Box is played on a two-dimensional grid. The object of the game
+      	   is to discover the location of objects ("atoms") hidden within the
+      	   grid, by the use of the minimum number of probes ("rays"). The atoms
+      	   are hidden by the computer. The player designates where the ray enters
+      	   the black box and the computer announces the result (a "hit", a
+      	   "reflection", or a "detour/miss"). This result is then marked and the
+      	   player uses these to deduce the position of the atoms in the black
+      	   box. Below is an example of a game board.</p>
+      	<p><img src="resource/Board.png" alt="Image example of a BlackBox board."></p>
+          <br/><nbsp/><nbsp/><a href="#top" target="_self" class="links">[back to top]</a>
+      </div>
+      <br />
+      <div class=boxes>
+      	<h2><a name="h_rules">Rules</a></h2>
+      	<p>Atoms interact with rays in three ways. A direct impact on an atom
+      		by a ray is a "hit". Thus, ray 1 fired into the box configuration at
+      		left strikes an atom directly, generating a "hit", designated by an "H".
+      		A ray which hits an atom does not emerge from the box.</p>
+      	<p><img src="resource/Hit.png" alt="Image example of a hit on an atom."></p>
+      	<p>The interaction resulting from a ray which does not actually hit an
+      		atom, but which passes directly to one side of the ball is called a
+      		"deflection". The angle of deflection for this ray/atom interaction is
+      		90 degrees. Ray 2 is deflected by the atom, exiting the box as shown.</p>
+      	<p><img src="resource/Deflection.png" alt="Image example of a deflection on an atom."></p>
+      	<p>The final type of interaction of a ray with an atom is a "reflection",
+      		designated by an "R". This occurs in two circumstances. If an atom is at the
+      		edge of the grid, any ray which is aimed into the grid directly beside it
+      		causes a reflection.</p>
+      	<p>Rays 3 and 4 would each generate a reflection,
+      		due to the atom at the edge. Ray 5 would be a hit on the atom.</p>
+      	<p><img src="resource/Reflection.png" alt="Image example of a reflection on an atom."></p>
+      	<p>The other circumstance leading to a reflection is when two deflections
+      		cancel out. In the grid, ray 6 results in a reflection due to its
+      		interaction with the atoms in the grid.</p>
+      	<p><img src="resource/DoubleDeflection.png"
+      		alt="Image example of a double deflection on an atom."></p>
+      	<p>There are also misses. Ray 7, for instance, interacts with no atoms
+      	in the grid.</p>
+      	<p><img src="resource/Miss.png" alt="Image example of a miss."></p>
+      	<p>Rays that don't result in hits or reflections are called "detours".
+      		These may be single or multiple deflections, or misses. A detour has an
+      		entry and an exit location, while hits and reflections only have an entry
+      		location for a hit (indicated by an "H") and a single entry/exit location
+      		for a reflection (indicated by an "R"). Detours and misses are indicated
+      		by a matching number/color pair at the entry and exit points.</p>
+      	<p>Of course, more complex situations result when these behaviors
+      		interact. Ray 8 results in two deflections, as does ray 9.</p>
+      	<p><img src="resource/Detour.png" alt="Image example of two detours on atoms."></p>
+      	<br/><nbsp/><nbsp/><a href="#top" target="_self" class="links">[back to top]</a>
+      </div>
+      <br />
+      <div class=boxes>
+      	<h2><a name="h_scr">Scoring</a></h2>
+      	<p>Each entry and exit location counts as a point. Hits and reflections
+      		therefore cost one point, while detours cost two points. When the seeker
+      		guesses the location of the atoms in the grid, each misidentified atom
+      		position costs five points. It is better to get a low score in this game.</p>
+      	<p>Different atom positions lead to different average scores - normally 8-9
+      	   for a four-ball game.</p>
+      	<br/><nbsp/><nbsp/><a href="#top" target="_self" class="links">[back to top]</a>
+      </div>
+    </div>
+  </body>
+</html>

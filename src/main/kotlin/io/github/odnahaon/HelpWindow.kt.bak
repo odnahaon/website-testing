@@ -1,0 +1,160 @@
+package io.github.odnahaon
+
+import java.awt.BorderLayout
+
+/**
+ * Creates a self-contained help window. The HTML contents and all images are
+ * loaded from the source directory "resource". The build configuration places
+ * the resources in the JAR file at the top level. After loading the help HTML
+ * from the resource the tags %...% are replaced with the image names using
+ * their absolute path from their URLs.
+ *
+ * @author noah
+ */
+class HelpWindow(x: Int, y: Int) : JFrame() {
+    /**
+     * Initialize the help window.
+     */
+    private fun initialize() {
+        val panel = JPanel(BorderLayout())
+        val jEditorPane = JEditorPane()
+        jEditorPane.setEditable(false)
+        val url: URL = HelpWindow::class.java.getResource("/Help.html")
+        jEditorPane.setContentType("text/html")
+        jEditorPane.setText(getURL(url))
+
+        // Add hyperlink listener for traversing the internal page links.
+        jEditorPane.addHyperlinkListener(object : HyperlinkListener() {
+            @Override
+            fun hyperlinkUpdate(event: HyperlinkEvent) {
+                if (HyperlinkEvent.EventType.ACTIVATED === event.getEventType()) {
+                    var reference: String = event.getDescription()
+                    if (reference != null && reference.startsWith("#")) {
+                        reference = reference.substring(1)
+                        jEditorPane.scrollToReference(reference)
+                    }
+                }
+            }
+        })
+        val jScrollPane = JScrollPane(jEditorPane)
+        jScrollPane.setPreferredSize(Dimension(540, 400))
+        panel.add(jScrollPane, BorderLayout.CENTER)
+        jEditorPane.setCaretPosition(0)
+        getContentPane().add(panel)
+        val btnPanel = JPanel()
+        val flowLayout: FlowLayout = btnPanel.getLayout() as FlowLayout
+        flowLayout.setAlignment(FlowLayout.RIGHT)
+        panel.add(btnPanel, BorderLayout.SOUTH)
+        val btnCloseButton = JButton("Close")
+        btnCloseButton.addActionListener(object : ActionListener() {
+            @Override
+            fun actionPerformed(e: ActionEvent?) {
+                close()
+            }
+        })
+        btnPanel.add(btnCloseButton)
+    }
+
+    /**
+     * Closes the window when invoked by the close button.
+     */
+    private fun close() {
+        setVisible(false)
+        dispose()
+    }
+
+    /**
+     * Read in the URL text and replace the tags %...% with the appropriate paths
+     * to the actual images.
+     *
+     * @param url help page URL
+     * @return The help page with the correct image locations.
+     */
+    @SuppressWarnings(["null"])
+    private fun getURL(url: URL): String {
+        // Read the help text into the string buffer.
+        val sb = StringBuilder()
+        var urlConn: URLConnection? = null
+        var `in`: InputStreamReader? = null
+        try {
+            urlConn = url.openConnection()
+            if (urlConn != null) urlConn.setReadTimeout(60 * 1000)
+            if (urlConn != null && urlConn.getInputStream() != null) {
+                `in` = InputStreamReader(
+                    urlConn.getInputStream(),
+                    Charset.defaultCharset()
+                )
+                val bufferedReader = BufferedReader(`in`)
+                if (bufferedReader != null) {
+                    var cp: Int
+                    while (bufferedReader.read().also { cp = it } != -1) {
+                        sb.append(cp.toChar())
+                    }
+                    bufferedReader.close()
+                }
+            }
+            `in`.close()
+        } catch (e: Exception) {
+            return """
+                Exception while calling URL: 
+                ${e.getMessage()}
+                """.trimIndent()
+        }
+
+        // Replace the tags with the image URLs.
+        var html = sb.toString()
+        var imgsrc: String = HelpWindow::class.java.getResource("/Board.png").toString()
+        html = html.replaceFirst("%BOARD%", imgsrc)
+        imgsrc = HelpWindow::class.java.getResource("/Hit.png").toString()
+        html = html.replaceFirst("%HIT%", imgsrc)
+        imgsrc = HelpWindow::class.java.getResource("/Deflection.png").toString()
+        html = html.replaceFirst("%DEFLECTION%", imgsrc)
+        imgsrc = HelpWindow::class.java.getResource("/Reflection.png").toString()
+        html = html.replaceFirst("%REFLECTION%", imgsrc)
+        imgsrc = HelpWindow::class.java.getResource("/DoubleDeflection.png").toString()
+        html = html.replaceFirst("%DOUBLE-DEFLECTION%", imgsrc)
+        imgsrc = HelpWindow::class.java.getResource("/Miss.png").toString()
+        html = html.replaceFirst("%MISS%", imgsrc)
+        imgsrc = HelpWindow::class.java.getResource("/Detour.png").toString()
+        html = html.replaceFirst("%DETOUR%", imgsrc)
+        return html
+    }
+
+    companion object {
+        private const val serialVersionUID = 1L
+
+        /**
+         * Run the help window for testing purposes.
+         *
+         * @param args not used
+         */
+        fun main(args: Array<String?>?) {
+            EventQueue.invokeLater(object : Runnable() {
+                @Override
+                fun run() {
+                    try {
+                        HelpWindow(100, 50)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            })
+        }
+    }
+
+    /**
+     * Open the help window at the specified location.
+     *
+     * @param x X location
+     * @param y Y location
+     */
+    init {
+        setTitle("BlackBox Help")
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE)
+        setLocation(x, y)
+        setSize(560, 450)
+        initialize()
+        pack()
+        setVisible(true)
+    }
+}

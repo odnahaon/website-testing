@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Noah's Website</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/c31a0f4a3b.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  </head>
+  <body>
+    <a name="top"></a>
+    <div class="navbar">
+      <div class="homeimage">
+        <a href="index.html" class="homeimagelink">
+          <img src="home.png" alt="Home image"/>
+        </a>
+      </div>
+      <div class="subnav">
+        <a class="subnavbtn">Projects <i class="fa fa-caret-down"></i></a>
+        <div class="subnav-content" id="subnav-content1">
+          <a href="blackbox.html" target="_blank">BlackBox</a>
+        </div>
+      </div>
+      <a href="about.html" target="_blank">About</a>
+      <a href="credits.html" target="_blank">Credits</a>
+    </div>
+    <div class="content">
+      <div class="boxes">
+        <h2>Hi! I'm Noah Ando.</h2>
+        <p>This is a website that I designed and coded myself. Coding is something I'm very interested in, and I've taken it up as a hobby. Check out some of my creations below!</p>
+      </div>
+      <br />
+      <div class="boxes">
+        <h3>BlackBox</h3>
+        <p>BlackBox is a video game that I originally coded for my 8th grade project. It's based on the BlackBox board game by Eric Solomon. I've ported it over from Java onto this website! <a href="blackbox.html" class="links">Click here to play it!</a></p>
+        <p style="color:red"><strong>Note:</strong> BlackBox website version is a work in progress. To play it, <a href="https://github.com/odnahaon/BlackBox/" class="links">download the JAR file from here.</a></p>
+      </div>
+      <br />
+      <div class="boxes">
+        <h3>I'm planning other projects in the future!</h3>
+        <p>More projects will be added to this website once they are completed.</p>
+      </div>
+    </div>
+    <button onclick="toTop()" id="totopbtn"><i class="fa fa-arrow-up"></i></button>
+    <script type="text/javascript" src="js/backtotop.js"></script>
+  </body>
+</html>
